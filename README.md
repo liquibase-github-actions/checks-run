@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.17.2
+- uses: liquibase-github-actions/checks-run@v4.18.0
   with:
     # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available. Options: [on|off]
     # string
@@ -23,10 +23,15 @@ steps:
     # Optional
     changelogFile: ""
 
-    # Comma-separated list of one or more enabled checks to run. If not specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,shortname3
+    # Comma-separated list of one or more enabled checks to run. Checks to exclude can be prefixed with the ! character. If no checks are specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,!shortname3
     # string
     # Optional
     checkName: ""
+
+    # Allow changeset"s rollback code to be analyzed for compliance with currently enabled quality checks.
+    # bool
+    # Optional
+    checkRollbacks: ""
 
     # Name of the integration that is executing checks run
     # string
@@ -68,7 +73,7 @@ steps:
     # Optional
     driverPropertiesFile: ""
 
-    # Option to create JSON output
+    # [PRO] Option to create JSON output
     # string
     # Optional
     format: ""
@@ -115,7 +120,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.17.2
+  - uses: liquibase-github-actions/checks-run@v4.18.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}

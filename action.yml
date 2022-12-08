@@ -13,7 +13,10 @@ inputs:
     description: 'Relative or fully qualified path to a Liquibase changelog file.  One of --changelog-file or --url is required.'
     required: false
   checkName: # string
-    description: 'Comma-separated list of one or more enabled checks to run. If not specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,shortname3'
+    description: 'Comma-separated list of one or more enabled checks to run. Checks to exclude can be prefixed with the ! character. If no checks are specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,!shortname3'
+    required: false
+  checkRollbacks: # bool
+    description: 'Allow changeset"s rollback code to be analyzed for compliance with currently enabled quality checks.'
     required: false
   checksIntegration: # string
     description: 'Name of the integration that is executing checks run'
@@ -40,7 +43,7 @@ inputs:
     description: 'The JDBC driver properties file'
     required: false
   format: # string
-    description: 'Option to create JSON output'
+    description: '[PRO] Option to create JSON output'
     required: false
   labels: # string
     description: 'Changeset labels to match'
@@ -233,6 +236,7 @@ runs:
     - ${{ inputs.cacheChangelogFileContents }}
     - ${{ inputs.changelogFile }}
     - ${{ inputs.checkName }}
+    - ${{ inputs.checkRollbacks }}
     - ${{ inputs.checksIntegration }}
     - ${{ inputs.checksScope }}
     - ${{ inputs.checksSettingsFile }}
