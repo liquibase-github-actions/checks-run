@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.22.0
+- uses: liquibase-github-actions/checks-run@v4.21.1
   with:
     # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available. Options: [on|off]
     # string
@@ -120,7 +120,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.22.0
+  - uses: liquibase-github-actions/checks-run@v4.21.1
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
