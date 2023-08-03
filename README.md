@@ -33,11 +33,6 @@ steps:
     # Optional
     checkRollbacks: ""
 
-    # Name of the integration that is executing checks run
-    # string
-    # Optional
-    checksIntegration: ""
-
     # The Liquibase component to run checks against, which can be a comma separated list
     # string
     # Optional

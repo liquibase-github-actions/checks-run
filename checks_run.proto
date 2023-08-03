@@ -20,22 +20,21 @@ message Checks {
     optional string changelog_file = 3; // Relative or fully qualified path to a Liquibase changelog file.  One of --changelog-file or --url is required.
     optional string check_name = 4; // Comma-separated list of one or more enabled checks to run. Checks to exclude can be prefixed with the ! character. If no checks are specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,!shortname3
     optional bool check_rollbacks = 5; // Allow changeset's rollback code to be analyzed for compliance with currently enabled quality checks.
-    optional string checks_integration = 6; // Name of the integration that is executing checks run
-    optional string checks_scope = 7; // The Liquibase component to run checks against, which can be a comma separated list
-    optional string checks_settings_file = 8; // Relative or fully qualified path to a configuration file for checks execution
-    optional string contexts = 9; // Changeset contexts to match
-    optional string default_catalog_name = 10; // The default catalog name to use for the database connection
-    optional string default_schema_name = 11; // The default schema name to use for the database connection
-    optional string driver = 12; // The JDBC driver class
-    optional string driver_properties_file = 13; // The JDBC driver properties file
-    optional string format = 14; // [PRO] Option to create JSON output
-    optional string labels = 15; // Changeset labels to match
-    optional string password = 16; // Password to use to connect to the database
-    optional string schemas = 17; // The schemas to check when checks-scope contains 'database'
-    optional string url = 18; // The JDBC database connection URL.  One of --changelog-file or --url is required.
-    optional string username = 19; // Username to use to connect to the database
-    optional bool verbose = 20; // Verbose flag with optional values of 'True' or 'False'. The default is 'False'.
-    liquibase.GlobalOptions global_options = 21;
+    optional string checks_scope = 6; // The Liquibase component to run checks against, which can be a comma separated list
+    optional string checks_settings_file = 7; // Relative or fully qualified path to a configuration file for checks execution
+    optional string contexts = 8; // Changeset contexts to match
+    optional string default_catalog_name = 9; // The default catalog name to use for the database connection
+    optional string default_schema_name = 10; // The default schema name to use for the database connection
+    optional string driver = 11; // The JDBC driver class
+    optional string driver_properties_file = 12; // The JDBC driver properties file
+    optional string format = 13; // [PRO] Option to create JSON output
+    optional string labels = 14; // Changeset labels to match
+    optional string password = 15; // Password to use to connect to the database
+    optional string schemas = 16; // The schemas to check when checks-scope contains 'database'
+    optional string url = 17; // The JDBC database connection URL.  One of --changelog-file or --url is required.
+    optional string username = 18; // Username to use to connect to the database
+    optional bool verbose = 19; // Verbose flag with optional values of 'True' or 'False'. The default is 'False'.
+    liquibase.GlobalOptions global_options = 20;
   }
 }
 
