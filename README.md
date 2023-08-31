@@ -33,6 +33,11 @@ steps:
     # Optional
     checkRollbacks: ""
 
+    # Specify which parts of the checks run output should be shown; options: all, issues, issues0, issues1, issues2, issues3, issues4, validated, checksrun, sqlparserfails, skippedchecks
+    # string
+    # Optional
+    checksOutput: ""
+
     # The Liquibase component to run checks against, which can be a comma separated list
     # string
     # Optional
@@ -46,7 +51,7 @@ steps:
     # Changeset contexts to match
     # string
     # Optional
-    contexts: ""
+    contextFilter: ""
 
     # The default catalog name to use for the database connection
     # string
@@ -76,7 +81,7 @@ steps:
     # Changeset labels to match
     # string
     # Optional
-    labels: ""
+    labelFilter: ""
 
     # Password to use to connect to the database
     # string
@@ -87,6 +92,11 @@ steps:
     # string
     # Optional
     schemas: ""
+
+    # The severity that a check which fails due to a SQL parse error will exit with. If not set, use the severity of the configured check. Available values are: 0, 1, 2, 3, 4
+    # int32
+    # Optional
+    sqlParserFailSeverity: ""
 
     # The JDBC database connection URL.  One of --changelog-file or --url is required.
     # string
