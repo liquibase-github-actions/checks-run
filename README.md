@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.24.0
+- uses: liquibase-github-actions/checks-run@v4.25.0
   with:
     # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available. Options: [on|off]
     # string
@@ -38,7 +38,12 @@ steps:
     # Optional
     checksOutput: ""
 
-    # The Liquibase component to run checks against, which can be a comma separated list
+    # If using a checks packages file, optionally specify which packages should be run from the file as a comma separated list.
+    # string
+    # Optional
+    checksPackages: ""
+
+    # The Liquibase component to run checks against, which can be a comma separated list of the following options: "changelog", "database"
     # string
     # Optional
     checksScope: ""
@@ -125,7 +130,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.24.0
+  - uses: liquibase-github-actions/checks-run@v4.25.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
