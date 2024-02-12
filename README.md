@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.25.1
+- uses: liquibase-github-actions/checks-run@v4.26.0
   with:
     # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available, or for file format changes. Options: [on|off]
     # string
@@ -22,6 +22,11 @@ steps:
     # string
     # Optional
     changelogFile: ""
+
+    # The changeset filter to use when determining which changesets to run checks against, which can be a comma separated list of the following options: "all", "pending"
+    # string
+    # Optional
+    changesetFilter: ""
 
     # Comma-separated list of one or more enabled checks to run. Checks to exclude can be prefixed with the ! character. If no checks are specified, all enabled checks will run. Example: --check-name=shortname1,shortname2,!shortname3
     # string
@@ -93,6 +98,21 @@ steps:
     # Optional
     password: ""
 
+    # [PRO] Enable or disable reporting.
+    # bool
+    # Optional
+    reportEnabled: ""
+
+    # [PRO] The name of the report.
+    # string
+    # Optional
+    reportName: ""
+
+    # [PRO] The path to the directory to generate the report.
+    # string
+    # Optional
+    reportPath: ""
+
     # The schemas to check when checks-scope contains "database"
     # string
     # Optional
@@ -130,7 +150,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.25.1
+  - uses: liquibase-github-actions/checks-run@v4.26.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
