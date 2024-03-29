@@ -6,8 +6,13 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.26.0
+- uses: liquibase-github-actions/checks-run@v4.27.0
   with:
+    # Automatically enable new quality checks in liquibase.checks.conf file when they are available. Options: [true|false]
+    # bool
+    # Optional
+    autoEnableNewChecks: ""
+
     # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available, or for file format changes. Options: [on|off]
     # string
     # Optional
@@ -38,7 +43,7 @@ steps:
     # Optional
     checkRollbacks: ""
 
-    # Specify which parts of the checks run output should be shown; options: all, issues, issues0, issues1, issues2, issues3, issues4, validated, checksrun, sqlparserfails, skippedchecks
+    # Specify which parts of the checks run output should be shown; options: all, issues, issues0, issues1, issues2, issues3, issues4, validated, checksrun, sqlparserfails, skippedchecks, nonApplicableChecks
     # string
     # Optional
     checksOutput: ""
@@ -98,6 +103,11 @@ steps:
     # Optional
     password: ""
 
+    # If set to "true" changesets are evaluated by checks after property substitution. If set to "false" changesets are evaluated by checks before property substitution, meaning the names of the "property substitution tokens" are evaluated.
+    # bool
+    # Optional
+    propertySubstitutionEnabled: ""
+
     # [PRO] Enable or disable reporting.
     # bool
     # Optional
@@ -150,7 +160,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.26.0
+  - uses: liquibase-github-actions/checks-run@v4.27.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
