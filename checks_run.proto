@@ -16,7 +16,7 @@ service ChecksRunService {
 message Checks {
   message RunRequest {
     optional bool auto_enable_new_checks = 1; // Automatically enable new quality checks in liquibase.checks.conf file when they are available. Options: [true|false]
-    optional string auto_update = 2; // Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available, or for file format changes. Options: [on|off]
+    optional bool auto_update = 2; // Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available, or for file format changes. Options: [on|off]
     optional bool cache_changelog_file_contents = 3; // If true, sqlFile change type contents will be cached in memory to improve performance, at the cost of higher memory usage. To reduce memory usage, set this to false.
     optional string changelog_file = 4; // Relative or fully qualified path to a Liquibase changelog file.  One of --changelog-file or --url is required.
     optional string changeset_filter = 5; // The changeset filter to use when determining which changesets to run checks against, which can be a comma separated list of the following options: 'all', 'pending'
