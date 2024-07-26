@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.28.0
+- uses: liquibase-github-actions/checks-run@v4.29.0
   with:
     # Automatically enable new quality checks in liquibase.checks.conf file when they are available. Options: [true|false]
     # bool
@@ -43,7 +43,7 @@ steps:
     # Optional
     checkRollbacks: ""
 
-    # Specify which parts of the checks run output should be shown; options: all, issues, issues0, issues1, issues2, issues3, issues4, validated, checksrun, sqlparserfails, skippedchecks, nonApplicableChecks
+    # Specify which parts of the checks run output should be shown; options: all, issues, issues0, issues1, issues2, issues3, issues4, validated, checksrun, sqlparserfails, skippedchecks, nonapplicablechecks
     # string
     # Optional
     checksOutput: ""
@@ -58,7 +58,17 @@ steps:
     # Optional
     checksScope: ""
 
-    # Relative or fully qualified path to a configuration file for checks execution
+    # Allow execution of custom script checks.
+    # bool
+    # Optional
+    checksScriptsEnabled: ""
+
+    # Only allow custom scripts found in the specified directories to execute. If not set custom scripts from any location will be allowed to execute.
+    # string
+    # Optional
+    checksScriptsPath: ""
+
+    # Relative or fully qualified path to a checks settings or checks package file for checks execution
     # string
     # Optional
     checksSettingsFile: ""
@@ -160,7 +170,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.28.0
+  - uses: liquibase-github-actions/checks-run@v4.29.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
