@@ -6,14 +6,14 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.29.1
+- uses: liquibase-github-actions/checks-run@v4.29.2
   with:
-    # Automatically enable new quality checks in liquibase.checks.conf file when they are available. Options: [true|false]
+    # Automatically enable new policy checks in liquibase.checks.conf file when they are available. Options: [true|false]
     # bool
     # Optional
     autoEnableNewChecks: ""
 
-    # Allows automatic backup and updating of liquibase.checks.conf file when new quality checks are available, or for file format changes. Options: [on|off]
+    # Allows automatic backup and updating of liquibase.checks.conf file when new policy checks are available, or for file format changes. Options: [on|off]
     # bool
     # Optional
     autoUpdate: ""
@@ -38,7 +38,7 @@ steps:
     # Optional
     checkName: ""
 
-    # Allow changeset"s rollback code to be analyzed for compliance with currently enabled quality checks.
+    # Allow changeset"s rollback code to be analyzed for compliance with currently enabled policy checks.
     # bool
     # Optional
     checkRollbacks: ""
@@ -170,7 +170,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.29.1
+  - uses: liquibase-github-actions/checks-run@v4.29.2
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
