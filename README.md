@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.30.0
+- uses: liquibase-github-actions/checks-run@v4.31.0
   with:
     # Automatically enable new policy checks in liquibase.checks.conf file when they are available. Options: [true|false]
     # bool
@@ -108,6 +108,11 @@ steps:
     # Optional
     labelFilter: ""
 
+    # The returned severity code when a MaxAffected* check which is NOOP (no operation) because it cannot run or determine results the specified script. If not set, returns the severity of the configured check. Available values are: 0, 1, 2, 3, 4
+    # int32
+    # Optional
+    maxAffectedFailSeverity: ""
+
     # Password to use to connect to the database
     # string
     # Optional
@@ -132,6 +137,16 @@ steps:
     # string
     # Optional
     reportPath: ""
+
+    # [PRO] Setting to prevent the display of exceptions (which might contain SQL) in operation reports. If suppressSql is on, and no value is provided here, it is assumed to also be on.
+    # bool
+    # Optional
+    reportSuppressException: ""
+
+    # [PRO] Setting to prevent the display of changeset SQL in operation reports.
+    # bool
+    # Optional
+    reportSuppressSql: ""
 
     # The schemas to check when checks-scope contains "database"
     # string
@@ -170,7 +185,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.30.0
+  - uses: liquibase-github-actions/checks-run@v4.31.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}

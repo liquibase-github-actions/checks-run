@@ -35,17 +35,20 @@ message Checks {
     optional string driver_properties_file = 18; // The JDBC driver properties file
     optional string format = 19; // [PRO] Option to create JSON output
     optional string label_filter = 20; // Changeset labels to match
-    optional string password = 21; // Password to use to connect to the database
-    optional bool property_substitution_enabled = 22; // If set to 'true' changesets are evaluated by checks after property substitution. If set to 'false' changesets are evaluated by checks before property substitution, meaning the names of the "property substitution tokens" are evaluated.
-    optional bool report_enabled = 23; // [PRO] Enable or disable reporting.
-    optional string report_name = 24; // [PRO] The name of the report.
-    optional string report_path = 25; // [PRO] The path to the directory to generate the report.
-    optional string schemas = 26; // The schemas to check when checks-scope contains 'database'
-    optional int32 sql_parser_fail_severity = 27; // The severity that a check which fails due to a SQL parse error will exit with. If not set, use the severity of the configured check. Available values are: 0, 1, 2, 3, 4
-    optional string url = 28; // The JDBC database connection URL.  One of --changelog-file or --url is required.
-    optional string username = 29; // Username to use to connect to the database
-    optional bool verbose = 30; // Verbose flag with optional values of 'True' or 'False'. The default is 'False'.
-    liquibase.GlobalOptions global_options = 31;
+    optional int32 max_affected_fail_severity = 21; // The returned severity code when a MaxAffected* check which is NOOP (no operation) because it cannot run or determine results the specified script. If not set, returns the severity of the configured check. Available values are: 0, 1, 2, 3, 4
+    optional string password = 22; // Password to use to connect to the database
+    optional bool property_substitution_enabled = 23; // If set to 'true' changesets are evaluated by checks after property substitution. If set to 'false' changesets are evaluated by checks before property substitution, meaning the names of the "property substitution tokens" are evaluated.
+    optional bool report_enabled = 24; // [PRO] Enable or disable reporting.
+    optional string report_name = 25; // [PRO] The name of the report.
+    optional string report_path = 26; // [PRO] The path to the directory to generate the report.
+    optional bool report_suppress_exception = 27; // [PRO] Setting to prevent the display of exceptions (which might contain SQL) in operation reports. If suppressSql is on, and no value is provided here, it is assumed to also be on.
+    optional bool report_suppress_sql = 28; // [PRO] Setting to prevent the display of changeset SQL in operation reports.
+    optional string schemas = 29; // The schemas to check when checks-scope contains 'database'
+    optional int32 sql_parser_fail_severity = 30; // The severity that a check which fails due to a SQL parse error will exit with. If not set, use the severity of the configured check. Available values are: 0, 1, 2, 3, 4
+    optional string url = 31; // The JDBC database connection URL.  One of --changelog-file or --url is required.
+    optional string username = 32; // Username to use to connect to the database
+    optional bool verbose = 33; // Verbose flag with optional values of 'True' or 'False'. The default is 'False'.
+    liquibase.GlobalOptions global_options = 34;
   }
 }
 
