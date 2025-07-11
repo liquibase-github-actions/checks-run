@@ -6,7 +6,7 @@ Check the changelog or database for issues
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/checks-run@v4.32.0
+- uses: liquibase-github-actions/checks-run@v4.33.0
   with:
     # Automatically enable new policy checks in liquibase.checks.conf file when they are available. Options: [true|false]
     # bool
@@ -185,7 +185,7 @@ The liquibase checks run action accepts all valid liquibase global options as op
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/checks-run@v4.32.0
+  - uses: liquibase-github-actions/checks-run@v4.33.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
